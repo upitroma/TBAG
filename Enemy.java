@@ -60,6 +60,9 @@ public class Enemy
     public int getSpeed() {
         return this.speed;
     }
+    public int getDamage() {
+        return MinDamage+(int)(Math.random()*(maxDamage-MinDamage));  
+    }
 
     @Override
     public String toString() {
