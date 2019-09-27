@@ -14,20 +14,26 @@ public class Player
     public int minDamage;
     public int health;
     public double critChance;
+    public int speed;
 
 
     public Player() {
     }
 
-    public Player(String username, int maxDamage, int minDamage, int health) {
+    public Player(String username, int maxDamage, int minDamage, int health, int speed) {
         this.username = username;
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
         this.health = health;
+        this.speed = speed;
     }
 
     public String getUsername() {
         return this.username;
+    }
+
+    public int getSpeed(){
+        return this.speed;
     }
 
     public int getDamage() {
