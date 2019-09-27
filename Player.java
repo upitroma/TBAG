@@ -7,37 +7,69 @@
  */
 public class Player
 {
-    
-
     public String username;
-    public int maxDamage;
-    public int minDamage;
+    public int baseDamage;
     public int health;
-    public double critChance;
     public int speed;
-
+    public StandardWeapons currentWeapon;
+    public StandardWeapons[] inventory;
 
     public Player() {
     }
 
-    public Player(String username, int maxDamage, int minDamage, int health, int speed) {
+    public Player(String username, int baseDamage, int health, int speed, StandardWeapons currentWeapon, StandardWeapons[] inventory) {
         this.username = username;
-        this.minDamage = minDamage;
-        this.maxDamage = maxDamage;
+        this.baseDamage = baseDamage;
         this.health = health;
         this.speed = speed;
+        this.inventory = inventory;
+        this.currentWeapon = currentWeapon;
+    }
+    public Player(String username, int baseDamage, int health, int speed) {
+        this.username = username;
+        this.baseDamage = baseDamage;
+        this.health = health;
+        this.speed = speed;
+        this.currentWeapon = new StandardWeapons("fists","Literally just your fists",1,2);
+        this.inventory = new StandardWeapons[] {this.currentWeapon};
     }
 
     public String getUsername() {
         return this.username;
     }
 
+    public StandardWeapons getCurrentWeapon(){
+        return this.currentWeapon;
+    }
+
+    public void setCurrentWeapon(StandardWeapons w){
+        this.currentWeapon = w;
+    }
+
+    public StandardWeapons[] getInventory(){
+        return this.inventory;
+    }
+
+    public void setInventory(StandardWeapons[] inv){
+        this.inventory = inv;
+    }
+
+    public void addItemToInventory(StandardWeapons w){
+       int x = inventory.length;
+       StandardWeapons[] inv = new StandardWeapons[x+1];
+       for (int i = 0; i<this.inventory.length; i++){
+            inv[i] = this.inventory[i];
+       } 
+       inv[-1] = w;
+       this.inventory = inv;
+    }
+
     public int getSpeed(){
         return this.speed;
     }
 
-    public int getDamage() {
-        return minDamage+(int)(Math.random()*(maxDamage-minDamage));  
+    public int getBaseDamage() {
+        return baseDamage;
     }
 
     public int getHealth() {
@@ -53,7 +85,7 @@ public class Player
     public String toString() {
         return "{" +
             " username='" + getUsername() + "'" +
-            ", damage='" + getDamage() + "'" +
+            ", base damage='" + getBaseDamage() + "'" +
             ", health='" + getHealth() + "'" +
             "}";
     }
