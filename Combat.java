@@ -1,19 +1,25 @@
 import java.util.Scanner;
 public class Combat{
-    public static void main(){
+    public static void main(String[] args){
         System.out.println("");
 
         Enemy bandit = new Enemy("jimmy", "a bandit", 10, 1, 3, 1, 20);
         Player player = new Player("me", 1,20, 5);
 
+
         startCombat(bandit,player);
     }
+    public static int enemyStartingHealth;
     public static void startCombat(Enemy e, Player p){
+        
+        enemyStartingHealth = e.getHealth();
         System.out.println("Danger approches");
+        System.out.println(displayHealth(e, p));
         Scanner in = new Scanner (System.in);
         String localUserInput = "";
 
         while(e.getHealth()>0){
+            System.out.println("\n\n\n\n");
             int playerattack = (p.getBaseDamage() + p.currentWeapon.getDamage());
             int enemyattack = e.getDamage();
             localUserInput = in.nextLine();
@@ -44,6 +50,23 @@ public class Combat{
                     System.out.println(i.toString());
                 }
             }
+            else if(localUserInput.equals("item")){
+                
+                System.out.println("Select an item");
+                for (HealingItems i : p.getHealingItems()){
+                    System.out.println("   " + i.getName());
+                }
+                System.out.println();
+                localUserInput = in.nextLine();
+                if(p.useHealingItem(localUserInput)){
+                    System.out.println("You used " + localUserInput +".");
+                }
+                else{
+                    System.out.println("You don't have item: " + localUserInput);
+                }
+            }
+
+            
 
             //////////////////////DEBUG
             else if(localUserInput.equals("kill")){
@@ -52,8 +75,9 @@ public class Combat{
                 //System.out.println(displayHealth(e,p));
             }
             //////////////////////DEBUG
+
             else{
-                System.out.println("Invalid command. Please use one of the following\n[fight, run, check, inventory]");
+                System.out.println("\nInvalid command. Please use one of the following\n[fight, run, check, inventory, item]");
             }
 
             System.out.println(displayHealth(e,p));
@@ -68,7 +92,27 @@ public class Combat{
     }
 
     public static String displayHealth(Enemy e, Player p){
-        return ("\nYour Health: " + p.getHealth() +" \nEnemy Health: " + String.valueOf(e.getHealth()) + "\n");
+        String playerHealthDisplay = "[";
+        int percentPlayerHealth = (p.getHealth()*20)/p.getMaxHealth();
+        for(int i = 0; i<percentPlayerHealth; i++){
+            playerHealthDisplay = playerHealthDisplay + "=";
+        }
+        for(int i = 0; i<20-percentPlayerHealth; i++){
+            playerHealthDisplay = playerHealthDisplay + " ";
+        }
+        playerHealthDisplay = playerHealthDisplay + "]";
+
+        String enemyHealthDisplay = "[";
+        int percentEnemyHealth = (e.getHealth()*20)/enemyStartingHealth;
+        for(int i = 0; i<percentEnemyHealth; i++){
+            enemyHealthDisplay= enemyHealthDisplay + "=";
+        }
+        for(int i = 0; i<20-percentEnemyHealth; i++){
+            enemyHealthDisplay = enemyHealthDisplay + " ";
+        }
+        enemyHealthDisplay = enemyHealthDisplay + "]";
+
+        return ("\nYour Health: " + p.getHealth() + playerHealthDisplay+ "\nEnemy Health: " + String.valueOf(e.getHealth()) + enemyHealthDisplay + "\n");
     } 
     public static void checkEnemy(Enemy e){
         System.out.println("\nEnemy Name: " + e.getName() + "\nEnemy Discription: " + e.getDiscription() + "\nEnemy Health: " + e.getHealth() + "\nEnemy Attack Damage: " + e.getMinDamage() + "-" + e.getMaxDamage() + "\nEnemy Speed: " + e.getSpeed());
