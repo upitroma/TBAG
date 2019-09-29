@@ -1,20 +1,13 @@
 import java.util.Scanner;
 public class Combat{
-    public static void main(String[] args){
-        System.out.println("");
-
-        Enemy bandit = new Enemy("jimmy", "a bandit", 10, 1, 3, 1, 20);
-        Player player = new Player("me", 1,20, 5);
-
-
-        startCombat(bandit,player);
-    }
+    
     public static int enemyStartingHealth;
     public static void startCombat(Enemy e, Player p){
         
         enemyStartingHealth = e.getHealth();
         System.out.println("Danger approches");
         System.out.println(displayHealth(e, p));
+        checkEnemy(e);
         Scanner in = new Scanner (System.in);
         String localUserInput = "";
 
@@ -46,9 +39,23 @@ public class Combat{
                 }
             }
             else if(localUserInput.equals("inventory")){
+                System.out.println("type the name of an item to equip it");
                 for (StandardWeapons i : p.getInventory()){
-                    System.out.println(i.toString());
+                    if(i.equals(p.getCurrentWeapon())){
+                        System.out.println("Equipped: " + i.toString());
+                    }
+                    else{
+                        System.out.println("          " + i.toString());
+                    }
                 }
+                localUserInput = in.nextLine();
+                for (StandardWeapons i : p.getInventory()){
+                    if (i.getName().equals(localUserInput)){
+                        p.setCurrentWeapon(i);
+                        System.out.println(p.getCurrentWeapon().getName() + " equipped.");
+                    }
+                }
+
             }
             else if(localUserInput.equals("item")){
                 
