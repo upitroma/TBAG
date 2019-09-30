@@ -1,16 +1,29 @@
+/**
+ * Run this one
+ * 
+ * @author Allen
+ */
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
         System.out.println("");
 
-        Enemy bandit = new Enemy("jimmy", "a bandit", 100, 1, 3, 1, 20);
-        Player player = new Player("me", 1,200, 5);
+        Enemy bandit = new Enemy("jimmy", "a bandit", 100, 1, 10, 1, 20);
+        Player player = new Player("me", 1,100, 5);
 
-        StandardWeapons brassKnuckles = new StandardWeapons("brass knuckles","your grandmother's lucky brass knuckles",1,3,20);
+        player.addItemToInventory(DevStorage.brassKnuckles);
+        player.addItemToInventory(DevStorage.fork);
 
-        player.addItemToInventory(brassKnuckles);
-        player.setCurrentWeapon(brassKnuckles);
+        player.addKnownSpell(DevStorage.strengthI); 
+        player.addKnownSpell(DevStorage.strengthII);
+        player.addKnownSpell(DevStorage.strengthIII);
+        player.addKnownSpell(DevStorage.flameI);
+        player.addKnownSpell(DevStorage.flameII);
+        player.addKnownSpell(DevStorage.flameIII);
+        
 
-        Combat.startCombat(bandit,player);
+        Combat.startCombat(bandit,player); 
+
+         
     }
 }
