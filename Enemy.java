@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class Enemy here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * For all basic enemies
+ * 
+ * @author Allen
  */
 public class Enemy
 {
     public String name;
     public String discription;
     public int health;
-    public int armor;
+    public int armor; //not used yet
     public int maxDamage;
-    public int MinDamage;
+    public int minDamage;
     public int speed;
+    public StatusEffects[] appliedStatusEffects;
 
 
     public Enemy() {
@@ -25,8 +25,9 @@ public class Enemy
         this.health = health;
         this.armor = armor;
         this.maxDamage = maxDamage;
-        this.MinDamage = MinDamage;
+        this.minDamage = MinDamage;
         this.speed = speed;
+        this.appliedStatusEffects = new StatusEffects[0];
     }
 
     public String getName() {
@@ -54,14 +55,28 @@ public class Enemy
     }
 
     public int getMinDamage() {
-        return this.MinDamage;
+        return this.minDamage;
     }
 
     public int getSpeed() {
         return this.speed;
     }
     public int getDamage() {
-        return MinDamage+(int)(Math.random()*(maxDamage-MinDamage));  
+        return  minDamage+(int)(Math.random()*((this.maxDamage-this.minDamage)*1.0));  
+    }
+
+    public StatusEffects[] getAppliedStatusEffects() {
+        return this.appliedStatusEffects;
+    }
+
+    public void addStatusEffect(StatusEffects w){
+        int x = this.appliedStatusEffects.length;
+        StatusEffects[] sta = new StatusEffects[x+1];
+        for (int i = 0; i<this.appliedStatusEffects.length; i++){
+             sta[i] = this.appliedStatusEffects[i];
+        } 
+        sta[sta.length-1] = w;
+        this.appliedStatusEffects = sta;
     }
 
     @Override
