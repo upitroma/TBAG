@@ -194,6 +194,21 @@ public class Combat{
             p.setHealth(tempH);
             return "You sacrificed " + tempH + " health and cast Flame III";
         }
+        else if (spellName.equals("Heal I") && p.getHealth()>2){
+            p.addStatusEffect(new StatusEffects("Heal I",2));
+            p.setHealth(p.getHealth()-2);
+            return "You sacrificed 2 health and cast Heal I";
+        }
+        else if (spellName.equals("Heal II") && p.getHealth()>2){
+            p.addStatusEffect(new StatusEffects("Heal II",3));
+            p.setHealth(p.getHealth()-5);
+            return "You sacrificed 5 health and cast Heal II";
+        }
+        else if (spellName.equals("Heal III") && p.getHealth()>2){
+            p.addStatusEffect(new StatusEffects("Heal III",5));
+            p.setHealth(p.getHealth()-50);
+            return "You sacrificed 50 health and cast Heal III";
+        }
 
         return "spell failed";
     }
@@ -213,9 +228,30 @@ public class Combat{
                 }
             }
         }
+        int pHeal = 0;
+        for (StatusEffects s : p.getAppliedStatusEffects()){
+            if(s.getDuration()==1){
+                if (s.getName().equals("Heal I")){
+                    pHeal += 5;
+                }
+                else if (s.getName().equals("Heal II")){
+                    pHeal += 10;
+                }
+                else if (s.getName().equals("Heal III")){
+                    pHeal+= 50;
+                }
+            }
+        }
         if (fireDamage>0){
             System.out.println("Enemy suffered " + fireDamage + " burn damage");
             e.setHealth(e.getHealth()-fireDamage);
+        }
+        if (pHeal>0){
+            System.out.println("You regenerated " + pHeal + " health");
+            p.setHealth(p.getHealth()+pHeal);
+            if(p.getHealth()>p.getMaxHealth()){
+
+            }
         }
 
         //manage duration
