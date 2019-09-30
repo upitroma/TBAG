@@ -15,11 +15,14 @@ public class DevStorage{
     public static Spells flameII = new Spells("Flame II","6 damage to enemy for 5 turns, lowers health by 30");
     public static Spells flameIII = new Spells("Flame III","5 damage to enemy for 99 turns, lowers health by %50");
 
-    public static Spells healI = new Spells("Heal I","regenerate 5 health after 2 rounds, lowers health by 2");//not added
-    public static Spells healII = new Spells("Heal II","regenerate 10 health after 3 rounds, lowers health by 5");//not added
-    public static Spells healIII = new Spells("Heal III","double current health after 5 rounds, lowers health by %50");//not added
+    public static Spells healI = new Spells("Heal I","regenerate 5 health after 2 rounds, lowers health by 2");
+    public static Spells healII = new Spells("Heal II","regenerate 10 health after 3 rounds, lowers health by 5");
+    public static Spells healIII = new Spells("Heal III","regenerate 25 health after 5 rounds, lowers health by 10");//needs to be changed
+
+    //public static Spells shelf = new Spells("Not Heal III","regenerate 50 health after 5 rounds, lowers health by 40");
 
     public static StandardWeapons brassKnuckles = new StandardWeapons("brass knuckles","your grandmother's lucky brass knuckles",1,3,20);
     public static StandardWeapons fork = new StandardWeapons("fork","a fork that was in the road", 1,4,10);
+
 
 }
