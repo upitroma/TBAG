@@ -21,7 +21,6 @@ public class Main{
         player.addKnownSpell(DevStorage.flameII);
         player.addKnownSpell(DevStorage.flameIII);
         
-		//this is a test
 
         Combat.startCombat(bandit,player); 
 
