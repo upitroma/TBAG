@@ -4,8 +4,6 @@ main storage for the game files
 # Breakdown
 ? = not sure about
 
-# Why does vs code hate me? plz help
-
 Questions that need to be answered before starting:
 * Is the game going to run on the server or client
 * How do we set up game Sync/server/file sharing/networking
