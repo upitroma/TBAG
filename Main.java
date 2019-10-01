@@ -20,8 +20,7 @@ public class Main{
         player.addKnownSpell(DevStorage.flameI);
         player.addKnownSpell(DevStorage.flameII);
         player.addKnownSpell(DevStorage.flameIII);
-        
-        //Guys, git is pretty cool
+
 
         Combat.startCombat(bandit,player); 
 
