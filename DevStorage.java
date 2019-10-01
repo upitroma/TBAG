@@ -17,7 +17,7 @@ public class DevStorage{
 
     public static Spells healI = new Spells("Heal I","regenerate 5 health after 2 rounds, lowers health by 2");
     public static Spells healII = new Spells("Heal II","regenerate 10 health after 3 rounds, lowers health by 5");
-    public static Spells healIII = new Spells("Heal III","regenerate 25 health after 5 rounds, lowers health by 10");//needs to be changed
+    public static Spells healIII = new Spells("Heal III","regenerate 30 health, lowers defence by %25 for 4 rounds");//not tested
 
     //public static Spells shelf = new Spells("Not Heal III","regenerate 50 health after 5 rounds, lowers health by 40");
 

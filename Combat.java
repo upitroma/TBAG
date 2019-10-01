@@ -21,6 +21,9 @@ public class Combat{
             System.out.println("\n\n\n\n");
             int playerattack = p.getTotalDamage();
             int enemyattack = e.getDamage();
+            //untested
+            enemyattack = checkForDamageBuffs(e,p)[0];
+            playerattack = checkForDamageBuffs(e,p)[1];
             localUserInput = in.nextLine();
             if(localUserInput.equals("fight")){
                 e.setHealth(e.getHealth()-playerattack);
@@ -204,15 +207,22 @@ public class Combat{
             p.setHealth(p.getHealth()-5);
             return "You sacrificed 5 health and cast Heal II";
         }
-        else if (spellName.equals("Heal III") && p.getHealth()>2){
-            p.addStatusEffect(new StatusEffects("Heal III",5));
-            p.setHealth(p.getHealth()-50);
-            return "You sacrificed 50 health and cast Heal III";
+        else if (spellName.equals("Heal III")&& p.getHealth()<p.getMaxHealth()-30){
+            p.addStatusEffect(new StatusEffects("Defense -%25",4));
+            p.setHealth(p.getHealth()+30);
+            return "You regenerated 30 health";
         }
 
         return "spell failed";
     }
+    //untested
+    public static int[] checkForDamageBuffs(int Edamage,int Pdamage){
 
+        if (s.getName().equals("Defense -%25")){
+            Edamage = (int) Edamage * 1.25;
+        }
+        return new int[]{Edamage, Pdamage};
+    }
     public static void applyStatusEffectDamage(Enemy e, Player p){
         int fireDamage = 0;
         for (StatusEffects s : e.getAppliedStatusEffects()){
@@ -236,9 +246,6 @@ public class Combat{
                 }
                 else if (s.getName().equals("Heal II")){
                     pHeal += 10;
-                }
-                else if (s.getName().equals("Heal III")){
-                    pHeal+= 50;
                 }
             }
         }
