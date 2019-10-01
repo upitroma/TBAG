@@ -16,14 +16,17 @@ public class Combat{
         Scanner in = new Scanner (System.in);
         String localUserInput = "";
 
+        int playerattack;
+        int enemyattack;
+
         while(e.getHealth()>0 && p.getHealth()>0){
             
             System.out.println("\n\n\n\n");
-            int playerattack = p.getTotalDamage();
-            int enemyattack = e.getDamage();
+            playerattack = p.getTotalDamage();
+            enemyattack = e.getDamage();
             //untested
-            enemyattack = checkForDamageBuffs(e,p)[0];
-            playerattack = checkForDamageBuffs(e,p)[1];
+            enemyattack = checkForDamageBuffs(e,p,enemyattack, playerattack)[0];
+            playerattack = checkForDamageBuffs(e,p,enemyattack, playerattack)[1];
             localUserInput = in.nextLine();
             if(localUserInput.equals("fight")){
                 e.setHealth(e.getHealth()-playerattack);
@@ -216,10 +219,11 @@ public class Combat{
         return "spell failed";
     }
     //untested
-    public static int[] checkForDamageBuffs(int Edamage,int Pdamage){
-
-        if (s.getName().equals("Defense -%25")){
-            Edamage = (int) Edamage * 1.25;
+    public static int[] checkForDamageBuffs(Enemy e,Player p, int Edamage, int Pdamage){
+        for(StatusEffects s : p.getAppliedStatusEffects()){
+            if (s.getName().equals("Defense -%25")){
+                Edamage = (int) Math.round(Edamage * 1.25);
+            }
         }
         return new int[]{Edamage, Pdamage};
     }

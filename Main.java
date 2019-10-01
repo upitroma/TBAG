@@ -20,6 +20,7 @@ public class Main{
         player.addKnownSpell(DevStorage.flameI);
         player.addKnownSpell(DevStorage.flameII);
         player.addKnownSpell(DevStorage.flameIII);
+        player.addKnownSpell(DevStorage.healIII);
 
 
         Combat.startCombat(bandit,player); 
