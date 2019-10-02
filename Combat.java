@@ -221,8 +221,10 @@ public class Combat{
     //untested
     public static int[] checkForDamageBuffs(Enemy e,Player p, int Edamage, int Pdamage){
         for(StatusEffects s : p.getAppliedStatusEffects()){
-            if (s.getName().equals("Defense -%25")){
-                Edamage = (int) Math.round(Edamage * 1.25);
+            if(s.getDuration()>0){
+                if (s.getName().equals("Defense -%25")){
+                    Edamage = (int) Math.round(Edamage * 1.25);
+                }
             }
         }
         return new int[]{Edamage, Pdamage};
