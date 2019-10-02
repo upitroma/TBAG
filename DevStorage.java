@@ -13,7 +13,7 @@ public class DevStorage{
 
     public static Spells flameI = new Spells("Flame I","3 damage to enemy for 3 turns, lowers health by 10");
     public static Spells flameII = new Spells("Flame II","6 damage to enemy for 5 turns, lowers health by 30");
-    public static Spells flameIII = new Spells("Flame III","5 damage to enemy for 99 turns, lowers health by %50");//should be lowered to %30 or something
+    public static Spells flameIII = new Spells("Flame III","5 damage to enemy for 99 turns, lowers health by %25");//should be lowered to %30 or something
 
     public static Spells healI = new Spells("Heal I","regenerate 5 health after 2 rounds, lowers health by 2");
     public static Spells healII = new Spells("Heal II","regenerate 10 health after 3 rounds, lowers health by 5");
