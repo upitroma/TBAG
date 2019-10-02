@@ -168,57 +168,63 @@ public class Combat{
     }
 
     public static String castSpell(String spellName, Enemy e, Player p){
-        if (spellName.equals("Strength I") && p.getHealth()>9){
-            p.addStatusEffect(new StatusEffects("Strength I", 3));
-            p.setHealth(p.getHealth()-9);
-            return "You sacrificed 9 health and cast Strength I";
+        for(Spells s : p.getKnownSpells()){
+            if(s.getName().equals(spellName)){
+                if (spellName.equals("Strength I") && p.getHealth()>9){
+                    p.addStatusEffect(new StatusEffects("Strength I", 3));
+                    p.setHealth(p.getHealth()-9);
+                    return "You sacrificed 9 health and cast Strength I";
+                }
+                else if(spellName.equals("Strength II") && p.getHealth()>30){
+                    p.addStatusEffect(new StatusEffects("Strength II", 5));
+                    p.setHealth(p.getHealth()-30);
+                    return "You sacrificed 30 health and cast Strength II";
+                }
+                else if(spellName.equals("Strength III") && p.getHealth()>2){
+                    p.addStatusEffect(new StatusEffects("Strength III", 99));
+                    int tempH = p.getHealth()/2;
+                    p.setHealth(tempH);
+                    return "You sacrificed " + tempH + " health and cast Strength III";
+                }
+                else if (spellName.equals("Flame I") && p.getHealth()>10){
+                    e.addStatusEffect(new StatusEffects("Flame I",3));
+                    p.setHealth(p.getHealth()-10);
+                    return "You sacrificed 10 health and cast Flame I";
+                }
+                else if (spellName.equals("Flame II") && p.getHealth()>30){
+                    e.addStatusEffect(new StatusEffects("Flame II",5));
+                    p.setHealth(p.getHealth()-30);
+                    return "You sacrificed 30 health and cast Flame II";
+                }
+                else if (spellName.equals("Flame III") && p.getHealth()>4){
+                    e.addStatusEffect(new StatusEffects("Flame III",99));
+                    int tempH = (p.getHealth()/4)*3;
+                    p.setHealth(tempH);
+                    return "You sacrificed " + tempH + " health and cast Flame III";
+                }
+                else if (spellName.equals("Heal I") && p.getHealth()>2){
+                    p.addStatusEffect(new StatusEffects("Heal I",2));
+                    p.setHealth(p.getHealth()-2);
+                    return "You sacrificed 2 health and cast Heal I";
+                }
+                else if (spellName.equals("Heal II") && p.getHealth()>2){
+                    p.addStatusEffect(new StatusEffects("Heal II",3));
+                    p.setHealth(p.getHealth()-5);
+                    return "You sacrificed 5 health and cast Heal II";
+                }
+                else if (spellName.equals("Heal III")&& p.getHealth()<p.getMaxHealth()-30){
+                    p.addStatusEffect(new StatusEffects("Defense -%25",4));
+                    p.setHealth(p.getHealth()+30);
+                    return "You regenerated 30 health";
+                }
+            }
         }
-        else if(spellName.equals("Strength II") && p.getHealth()>30){
-            p.addStatusEffect(new StatusEffects("Strength II", 5));
-            p.setHealth(p.getHealth()-30);
-            return "You sacrificed 30 health and cast Strength II";
-        }
-        else if(spellName.equals("Strength III") && p.getHealth()>2){
-            p.addStatusEffect(new StatusEffects("Strength III", 99));
-            int tempH = p.getHealth()/2;
-            p.setHealth(tempH);
-            return "You sacrificed " + tempH + " health and cast Strength III";
-        }
-        else if (spellName.equals("Flame I") && p.getHealth()>10){
-            e.addStatusEffect(new StatusEffects("Flame I",3));
-            p.setHealth(p.getHealth()-10);
-            return "You sacrificed 10 health and cast Flame I";
-        }
-        else if (spellName.equals("Flame II") && p.getHealth()>30){
-            e.addStatusEffect(new StatusEffects("Flame II",5));
-            p.setHealth(p.getHealth()-30);
-            return "You sacrificed 30 health and cast Flame II";
-        }
-        else if (spellName.equals("Flame III") && p.getHealth()>4){
-            e.addStatusEffect(new StatusEffects("Flame III",99));
-            int tempH = (p.getHealth()/4)*3;
-            p.setHealth(tempH);
-            return "You sacrificed " + tempH + " health and cast Flame III";
-        }
-        else if (spellName.equals("Heal I") && p.getHealth()>2){
-            p.addStatusEffect(new StatusEffects("Heal I",2));
-            p.setHealth(p.getHealth()-2);
-            return "You sacrificed 2 health and cast Heal I";
-        }
-        else if (spellName.equals("Heal II") && p.getHealth()>2){
-            p.addStatusEffect(new StatusEffects("Heal II",3));
-            p.setHealth(p.getHealth()-5);
-            return "You sacrificed 5 health and cast Heal II";
-        }
-        else if (spellName.equals("Heal III")&& p.getHealth()<p.getMaxHealth()-30){
-            p.addStatusEffect(new StatusEffects("Defense -%25",4));
-            p.setHealth(p.getHealth()+30);
-            return "You regenerated 30 health";
-        }
+        
+    
 
         return "spell failed";
     }
-    //untested
+
     public static int[] checkForDamageBuffs(Enemy e,Player p, int Edamage, int Pdamage){
         for(StatusEffects s : p.getAppliedStatusEffects()){
             if(s.getDuration()>0){
