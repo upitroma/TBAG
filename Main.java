@@ -20,6 +20,8 @@ public class Main{
         player.addKnownSpell(DevStorage.flameI);
         player.addKnownSpell(DevStorage.flameII);
         player.addKnownSpell(DevStorage.flameIII);
+        player.addKnownSpell(DevStorage.healI);
+        player.addKnownSpell(DevStorage.healII);
         player.addKnownSpell(DevStorage.healIII);
 
 

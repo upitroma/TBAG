@@ -198,8 +198,8 @@ public class Combat{
                 }
                 else if (spellName.equals("Flame III") && p.getHealth()>4){
                     e.addStatusEffect(new StatusEffects("Flame III",99));
-                    int tempH = (p.getHealth()/4)*3;
-                    p.setHealth(tempH);
+                    int tempH = (p.getHealth()/3);
+                    p.setHealth(p.getHealth()-tempH);
                     return "You sacrificed " + tempH + " health and cast Flame III";
                 }
                 else if (spellName.equals("Heal I") && p.getHealth()>2){
