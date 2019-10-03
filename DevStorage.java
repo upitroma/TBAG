@@ -17,15 +17,15 @@ public class DevStorage{
 
     public static Spells healI = new Spells("Heal I","regenerate 5 health after 2 rounds, lowers health by 2");
     public static Spells healII = new Spells("Heal II","regenerate 10 health after 3 rounds, lowers health by 5");
-    public static Spells healIII = new Spells("Heal III","regenerate 30 health, lowers defence by %25 for 4 rounds, fails if you are missing less than 30 health");//not tested
+    public static Spells healIII = new Spells("Heal III","regenerate 30 health, lowers defence by %25 for 4 rounds, fails if you are missing less than 30 health");
 
-    public static Spells delayedStrikeI = new Spells("Delayed Strike I","hit enemy for 5 damage after 2 rounds, lowers health by 1");//not added 
-    public static Spells delayedStrikeII = new Spells("Delayed Strike II","hit enemy for 10 damage after 4 rounds, lowers health by 5");//not added
-    public static Spells delayedStrikeIII = new Spells("Delayed Strike III","hit enemy for 30 damage after 8 rounds, lowers health by 10");//not added
+    public static Spells delayedStrikeI = new Spells("Delayed Strike I","hit enemy for 5 damage after 2 rounds, lowers health by 1");
+    public static Spells delayedStrikeII = new Spells("Delayed Strike II","hit enemy for 10 damage after 4 rounds, lowers health by 5");
+    public static Spells delayedStrikeIII = new Spells("Delayed Strike III","hit enemy for 30 damage after 8 rounds, lowers health by 10");
 
     //public static Spells delayedStrikeIV = new Spells("Delayed Strike IV","hit enemy for 70 damage after 20 rounds, if enemy does not die from this attack, lower own health by 70");//not added, probably bad idea
 
-    public static Spells comboStrike = new Spells("Combo Strike","increases next attack by %5 compounded with each instance (up to 20), all instances of Combo Strike end when player attacks");//not added
+    //public static Spells comboStrike = new Spells("Combo Strike","increases next attack by %5 compounded with each instance (up to 20), all instances of Combo Strike end when player attacks");//not added
 
     //public static Spells shelf = new Spells("Not Heal III","regenerate 50 health after 5 rounds, lowers health by 40");
 
