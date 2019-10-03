@@ -23,6 +23,8 @@ public class DevStorage{
     public static Spells delayedStrikeII = new Spells("Delayed Strike II","hit enemy for 10 damage after 4 rounds, lowers health by 5");
     public static Spells delayedStrikeIII = new Spells("Delayed Strike III","hit enemy for 30 damage after 8 rounds, lowers health by 10");
 
+    public static Spells energyShield = new Spells("Shield","create an energy shield with 30hp, shield absorbs %50 damage, shield hp drains 1/round, unable to cast spells while shield is active");
+
     //public static Spells delayedStrikeIV = new Spells("Delayed Strike IV","hit enemy for 70 damage after 20 rounds, if enemy does not die from this attack, lower own health by 70");//not added, probably bad idea
 
     //public static Spells comboStrike = new Spells("Combo Strike","increases next attack by %5 compounded with each instance (up to 20), all instances of Combo Strike end when player attacks");//not added

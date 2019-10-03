@@ -169,6 +169,13 @@ public class Combat{
     }
 
     public static String castSpell(String spellName, Enemy e, Player p){
+
+        for(StatusEffects s : p.getAppliedStatusEffects()){
+            if (s.getName().equals("Energy Shield") && s.getDuration()>0){
+                return "spell failed (can't cast spells while shield is up)";
+            }
+        }
+
         for(Spells s : p.getKnownSpells()){
             if(s.getName().equals(spellName)){
                 if (spellName.equals("Strength I") && p.getHealth()>9){
@@ -233,6 +240,10 @@ public class Combat{
                     p.setHealth(p.getHealth()-10);
                     return "You sacrificed 10 health and cast Delayed Strike III";
                 }
+                else if (spellName.equals("Shield")){
+                    p.addStatusEffect(new StatusEffects("Energy Shield",30));
+                    return "You focused your energy into a shield";
+                }
             }
         }
         
@@ -246,6 +257,10 @@ public class Combat{
             if(s.getDuration()>0){
                 if (s.getName().equals("Defense -%25")){
                     Edamage = (int) Math.round(Edamage * 1.25);
+                }
+                if (s.getName().equals("Energy Shield")){
+                    Edamage/=2;
+                    s.duration-=(Edamage/=2);
                 }
             }
         }

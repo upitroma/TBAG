@@ -26,6 +26,7 @@ public class Main{
         player.addKnownSpell(DevStorage.delayedStrikeI);
         player.addKnownSpell(DevStorage.delayedStrikeII);
         player.addKnownSpell(DevStorage.delayedStrikeIII);
+        player.addKnownSpell(DevStorage.energyShield);
 
 
         Combat.startCombat(bandit,player); 
