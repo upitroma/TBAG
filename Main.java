@@ -23,6 +23,9 @@ public class Main{
         player.addKnownSpell(DevStorage.healI);
         player.addKnownSpell(DevStorage.healII);
         player.addKnownSpell(DevStorage.healIII);
+        player.addKnownSpell(DevStorage.delayedStrikeI);
+        player.addKnownSpell(DevStorage.delayedStrikeII);
+        player.addKnownSpell(DevStorage.delayedStrikeIII);
 
 
         Combat.startCombat(bandit,player); 

@@ -105,6 +105,7 @@ public class Combat{
             else if(localUserInput.equals("kill")){
                 e.setHealth(e.getHealth()-999999999);
                 System.out.println("you hit for " + "a lot of" + " damage.");
+                System.out.println(displayHealth(e,p));
             }
             //////////////////////DEBUG
 
@@ -217,6 +218,21 @@ public class Combat{
                     p.setHealth(p.getHealth()+30);
                     return "You regenerated 30 health";
                 }
+                else if (spellName.equals("Delayed Strike I")&& p.getHealth()>1){
+                    e.addStatusEffect(new StatusEffects("Delayed Strike I",2));
+                    p.setHealth(p.getHealth()-1);
+                    return "You sacrificed 1 health and cast Delayed Strike I";
+                }
+                else if (spellName.equals("Delayed Strike II")&& p.getHealth()>5){
+                    e.addStatusEffect(new StatusEffects("Delayed Strike II",4));
+                    p.setHealth(p.getHealth()-5);
+                    return "You sacrificed 5 health and cast Delayed Strike II";
+                }
+                else if (spellName.equals("Delayed Strike III")&& p.getHealth()>10){
+                    e.addStatusEffect(new StatusEffects("Delayed Strike III",8));
+                    p.setHealth(p.getHealth()-10);
+                    return "You sacrificed 10 health and cast Delayed Strike III";
+                }
             }
         }
         
@@ -237,6 +253,7 @@ public class Combat{
     }
     public static void applyStatusEffectDamage(Enemy e, Player p){
         int fireDamage = 0;
+        int delayedStrikeDamage = 0;
         for (StatusEffects s : e.getAppliedStatusEffects()){
             if (s.getDuration()>0){
                 if (s.getName().equals("Flame I")){
@@ -247,6 +264,17 @@ public class Combat{
                 }
                 else if (s.getName().equals("Flame III")){
                     fireDamage += 5;
+                }
+            }
+            else if(s.getDuration()==0){
+                if (s.getName().equals("Delayed Strike I")){
+                    delayedStrikeDamage += 5;
+                }
+                else if (s.getName().equals("Delayed Strike II")){
+                    delayedStrikeDamage += 10;
+                }
+                else if (s.getName().equals("Delayed Strike III")){
+                    delayedStrikeDamage += 30;
                 }
             }
         }
@@ -265,11 +293,15 @@ public class Combat{
             System.out.println("Enemy suffered " + fireDamage + " burn damage");
             e.setHealth(e.getHealth()-fireDamage);
         }
+        if(delayedStrikeDamage>0){
+            System.out.println("Enemy hit with Delayed Strike for " + delayedStrikeDamage + " damage");
+            e.setHealth(e.getHealth()-delayedStrikeDamage);
+        }
         if (pHeal>0){
             System.out.println("You regenerated " + pHeal + " health");
             p.setHealth(p.getHealth()+pHeal);
             if(p.getHealth()>p.getMaxHealth()){
-
+                p.setHealth(p.getMaxHealth());
             }
         }
 
