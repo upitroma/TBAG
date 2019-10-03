@@ -8,7 +8,7 @@ public class Main{
     public static void main(String[] args){
         System.out.println("");
 
-        Enemy bandit = new Enemy("jimmy", "a bandit", 100, 1, 10, 1, 20);
+        
         Player player = new Player("me", 100,100, 5);
 
         player.addItemToInventory(DevStorage.brassKnuckles);
@@ -27,9 +27,11 @@ public class Main{
         player.addKnownSpell(DevStorage.delayedStrikeII);
         player.addKnownSpell(DevStorage.delayedStrikeIII);
         player.addKnownSpell(DevStorage.energyShield);
-        System.out.println(player.getBaseDamage());
 
+        Enemy squirrel = new Enemy("Chip", "a squirrel", 10, 1, 5, 1, 20);
+        Enemy bandit = new Enemy("jimmy", "a bandit", 100, 1, 10, 1, 20);
 
+        Combat.startCombat(squirrel,player); 
         Combat.startCombat(bandit,player); 
 
          

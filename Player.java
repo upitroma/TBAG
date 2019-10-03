@@ -194,6 +194,9 @@ public class Player
     public int getMaxHealth(){
         return this.maxHealth;
     }
+    public void setMaxHealth(int h){
+        this.maxHealth = h;
+    }
 
     public void setHealth(int health) {
         this.health = health;
