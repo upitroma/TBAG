@@ -9,19 +9,18 @@ public class Player
     public int health;
     public int maxHealth;
     public int speed;
-    public int shieldHp;
     public StandardWeapons currentWeapon;
     public StandardWeapons[] inventory;
     public HealingItems[] healingItems;
     public StatusEffects[] appliedStatusEffects;
     public Spells[] knownSpells;
+    public int exp;
 
     public Player() {
     }
 
-    public Player(String username, int baseDamage, int health, int maxHealth, int speed, StandardWeapons currentWeapon, StandardWeapons[] inventory, HealingItems[] healingItems, StatusEffects[] appliedStatusEffects, Spells[] knownSpells) {
+    public Player(String username, int health, int maxHealth, int speed, StandardWeapons currentWeapon, StandardWeapons[] inventory, HealingItems[] healingItems, StatusEffects[] appliedStatusEffects, Spells[] knownSpells, int exp) {
         this.username = username;
-        this.baseDamage = baseDamage;
         this.health = health;
         this.maxHealth = maxHealth;
         this.speed = speed;
@@ -30,10 +29,13 @@ public class Player
         this.healingItems = healingItems;
         this.appliedStatusEffects = appliedStatusEffects;
         this.knownSpells = knownSpells;
+        this.exp = exp;
+        this.baseDamage = exp;
     }
-    public Player(String username, int baseDamage, int maxHealth, int speed) {
+    public Player(String username, int exp, int maxHealth, int speed) {
         this.username = username;
-        this.baseDamage = baseDamage;
+        this.exp = 10;
+        this.baseDamage = ((int)Math.floor(Math.log10(1.0*exp)));
         this.health = maxHealth;
         this.maxHealth = maxHealth;
         this.speed = speed;
@@ -42,6 +44,7 @@ public class Player
         this.healingItems = new HealingItems[] {new HealingItems("pie","A butterscotch-cinnamon pie",100), new HealingItems("Pop-Tart","Breakfast of Champions",5)};
         this.appliedStatusEffects = new StatusEffects[0];
         this.knownSpells = new Spells[0];
+        
     }
 
     public StatusEffects[] getAppliedStatusEffects() {
@@ -60,6 +63,13 @@ public class Player
 
     public Spells[] getKnownSpells(){
         return this.knownSpells;
+    }
+
+    public int getExp(){
+        return this.exp;
+    }
+    public void setExp(int ex){
+        this.exp = ex;
     }
 
     public void addKnownSpell(Spells spell){

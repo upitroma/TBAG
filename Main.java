@@ -9,7 +9,7 @@ public class Main{
         System.out.println("");
 
         Enemy bandit = new Enemy("jimmy", "a bandit", 100, 1, 10, 1, 20);
-        Player player = new Player("me", 1,100, 5);
+        Player player = new Player("me", 100,100, 5);
 
         player.addItemToInventory(DevStorage.brassKnuckles);
         player.addItemToInventory(DevStorage.fork);
@@ -27,6 +27,7 @@ public class Main{
         player.addKnownSpell(DevStorage.delayedStrikeII);
         player.addKnownSpell(DevStorage.delayedStrikeIII);
         player.addKnownSpell(DevStorage.energyShield);
+        System.out.println(player.getBaseDamage());
 
 
         Combat.startCombat(bandit,player); 

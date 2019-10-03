@@ -120,7 +120,9 @@ public class Combat{
                 System.out.println("You died, try getting good");
             }
             else if (e.getHealth()<=0){
-                System.out.println("You lived to tell another tale.");
+                System.out.println("You lived to tell another tale.\nYou gained " + enemyStartingHealth + " exp!");
+                p.setExp(p.getExp()+enemyStartingHealth);
+                p.setHealth(p.getMaxHealth());
             }
 
             
