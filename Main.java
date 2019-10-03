@@ -30,10 +30,14 @@ public class Main{
 
         Enemy squirrel = new Enemy("Chip", "a squirrel", 10, 1, 5, 1, 20);
         Enemy bandit = new Enemy("jimmy", "a bandit", 100, 1, 10, 1, 20);
+        Enemy assasin = new Enemy("Zer0", "a trained assasin", 150, 1, 20, 10, 20);
+        Enemy boss = new Enemy("\"Big Daddy\"", "(probably not your dad)", 300, 1, 10, 10, 20);
 
         Combat.startCombat(squirrel,player); 
         Combat.startCombat(bandit,player); 
+        Combat.startCombat(assasin,player); 
+        Combat.startCombat(boss,player); 
 
-         
+         //need to clear status effects at end of fight
     }
 }
