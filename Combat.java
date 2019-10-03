@@ -103,9 +103,8 @@ public class Combat{
 
             //////////////////////DEBUG
             else if(localUserInput.equals("kill")){
-                e.setHealth(e.getHealth()-999999999);
+                e.setHealth(0);
                 System.out.println("you hit for " + "a lot of" + " damage.");
-                System.out.println(displayHealth(e,p));
             }
             //////////////////////DEBUG
 
@@ -138,6 +137,7 @@ public class Combat{
             playerHealthDisplay = playerHealthDisplay + " ";
         }
         playerHealthDisplay = playerHealthDisplay + "]";
+
 
         String playerStatusEffectDisplay = "";
         for (StatusEffects s : p.getAppliedStatusEffects()){

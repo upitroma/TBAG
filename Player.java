@@ -19,7 +19,7 @@ public class Player
     public Player() {
     }
 
-    public Player(String username, int baseDamage, int health, int maxHealth, int speed, StandardWeapons currentWeapon, StandardWeapons[] inventory, HealingItems[] healingItems, StatusEffects[] appliedStatusEffects, Spells[] knownSpells,int shieldHp) {
+    public Player(String username, int baseDamage, int health, int maxHealth, int speed, StandardWeapons currentWeapon, StandardWeapons[] inventory, HealingItems[] healingItems, StatusEffects[] appliedStatusEffects, Spells[] knownSpells) {
         this.username = username;
         this.baseDamage = baseDamage;
         this.health = health;
@@ -30,7 +30,6 @@ public class Player
         this.healingItems = healingItems;
         this.appliedStatusEffects = appliedStatusEffects;
         this.knownSpells = knownSpells;
-        this.shieldHp = shieldHp;
     }
     public Player(String username, int baseDamage, int maxHealth, int speed) {
         this.username = username;
@@ -43,7 +42,6 @@ public class Player
         this.healingItems = new HealingItems[] {new HealingItems("pie","A butterscotch-cinnamon pie",100), new HealingItems("Pop-Tart","Breakfast of Champions",5)};
         this.appliedStatusEffects = new StatusEffects[0];
         this.knownSpells = new Spells[0];
-        this.shieldHp = 0;
     }
 
     public StatusEffects[] getAppliedStatusEffects() {
