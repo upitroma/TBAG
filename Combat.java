@@ -42,6 +42,10 @@ public class Combat{
             else if(localUserInput.equals("run")){
                 if(p.getSpeed()>e.getSpeed()){
                     System.out.println("You ran away");
+                    p.setHealth(p.getMaxHealth());
+                    p.appliedStatusEffects = new StatusEffects[]{};
+                    System.out.println("Press enter to continue...");
+                    in.nextLine();
                     break;
                 }
                 else{
@@ -119,6 +123,8 @@ public class Combat{
             if(p.getHealth()<=0){
                 System.out.println("You died, try getting good");
                 System.out.println("Since this is just a demo, keep on playing");
+                p.setHealth(p.getMaxHealth());
+                p.appliedStatusEffects = new StatusEffects[]{};
                 System.out.println("Press enter to continue...");
                 in.nextLine();
             }
@@ -128,6 +134,7 @@ public class Combat{
                 System.out.println("You lived to tell another tale.\nYou gained " + enemyStartingHealth + " exp and " + num + " max health!");
                 p.setExp(p.getExp()+enemyStartingHealth);
                 p.setHealth(p.getMaxHealth());
+                p.appliedStatusEffects = new StatusEffects[]{};
                 System.out.println("Press enter to continue...");
                 in.nextLine();
             }
