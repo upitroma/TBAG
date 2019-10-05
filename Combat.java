@@ -11,8 +11,8 @@ public class Combat{
         
         enemyStartingHealth = e.getHealth();
         System.out.println("Danger approches");
-        System.out.println(displayHealth(e, p));
         checkEnemy(e);
+        System.out.println(displayHealth(e, p));
         Scanner in = new Scanner (System.in);
         String localUserInput = "";
 
