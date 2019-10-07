@@ -36,6 +36,8 @@ public class Main{
         Enemy assasin = new Enemy(EnemyNameGen.getName(), EnemyNameGen.getDiscription(), 150, 1, 20, 10, 20);
         Enemy boss = new Enemy(EnemyNameGen.getName(), EnemyNameGen.getDiscription(), 300, 1, 10, 10, 20);
 
+        
+
         Combat.startCombat(squirrel,player); 
         Combat.startCombat(squirrel2,player);
         Combat.startCombat(sandy,player);
@@ -45,6 +47,30 @@ public class Main{
         Combat.startCombat(assasin,player); 
         Combat.startCombat(boss,player); 
 
-         //need to bugg strength spells
+        Scanner in = new Scanner(System.in);
+
+
+        //random boss testing
+        Enemy infiniboss = new Enemy("Upitroma","The Undying",100,1,10,5,9999);
+        Combat.startCombat(infiniboss,player); 
+        for (int x = 2; x<5; x++){
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHe remains...\nPress enter to continue...");
+            in.nextLine();
+            infiniboss = new Enemy("Upitroma","The Undying",x*100,1,x*10,x*5,9999);
+            Combat.startCombat(infiniboss,player); 
+            player.addHealingItem(new HealingItems("Fighting Chance","heals 100 health",100));
+        }
+        player.addItemToInventory(new StandardWeapons("Emerald Dagger", "Upitroma's legendary dagger", 40, 50, 30));
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUpitroma's legendary emerald dagger added to inventory.\nPress enter to continue...");
+        in.nextLine();
+        for (int x = 5; x<10; x++){
+            player.addHealingItem(new HealingItems("Only Hope","heals 200 health",200));
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHe remains...\n");
+            in.nextLine();
+            infiniboss = new Enemy("Upitroma","The Undying",x*100,1,x*10,x*5,9999);
+            Combat.startCombat(infiniboss,player); 
+        }
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIt's finally over.\nPress enter to end the game.");
+        in.nextLine();
     }
 }

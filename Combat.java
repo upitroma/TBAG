@@ -1,9 +1,9 @@
+import java.util.Scanner;
 /**
  * Manages all things combat
  * 
  * @author Allen (modeled after the python TBAG)
  */
-import java.util.Scanner;
 public class Combat{
     
     public static int enemyStartingHealth; //for calculating healthbar

@@ -121,7 +121,7 @@ public class Player
         for (int i = 0; i<this.healingItems.length; i++){
              inv[i] = this.healingItems[i];
         } 
-        inv[-1] = k;
+        inv[x] = k;
         this.healingItems = inv;
      }
 
