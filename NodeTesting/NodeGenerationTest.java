@@ -1,5 +1,3 @@
-import sun.jvm.hotspot.gc.parallel.PSYoungGen;
-
 public class NodeGenerationTest{
 
     public static Node[] nodeMap;
