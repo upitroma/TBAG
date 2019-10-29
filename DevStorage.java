@@ -33,6 +33,7 @@ public class DevStorage{
 
     public static StandardWeapons brassKnuckles = new StandardWeapons("brass knuckles","your grandmother's lucky brass knuckles",1,3,20);
     public static StandardWeapons fork = new StandardWeapons("fork","a fork that was in the road", 1,4,10);
+    public static StandardWeapons foldingChair = new StandardWeapons("folding chair", "your standard metal folding chair",2,5,5);
 
 
 }
